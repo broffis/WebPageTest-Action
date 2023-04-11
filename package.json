@@ -1,0 +1,14 @@
+{
+  "name": "webpagetest-script-ts",
+  "version": "0.1.0",
+  "description": "WebPageTest Script",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-fetch": "^3.3.1",
+    "webpagetest": "^0.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.4"
+  }
+}
