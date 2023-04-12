@@ -2,6 +2,10 @@
   "name": "webpagetest-script-ts",
   "version": "0.1.0",
   "description": "WebPageTest Script",
+  "main": "src/wpt.ts",
+  "scripts": {
+    "run": "tsc && node dist/wpt.js"
+  },
   "dependencies": {
     "dotenv": "^16.0.3",
     "node-fetch": "^3.3.1",
