@@ -39,3 +39,15 @@ export type LHMetricLabel =
   | "TFB"
   | "TBT"
   | "SI";
+
+export enum SlackEmojisEnum {
+  GREEN_CIRCLE = ":large_green_circle:",
+  ORANGE_DIAMOND = ":large_orange_diamond:",
+  RED_SQUARE = ":large_red_square:",
+}
+
+export type SlackMessageValues = {
+  id: LHMetricLabel;
+  emoji: SlackEmojisEnum;
+  value: string;
+};

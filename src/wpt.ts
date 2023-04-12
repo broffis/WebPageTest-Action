@@ -15,11 +15,10 @@ const testUrl = "https://www.build.com/product/summary/433454";
 let options = {
   firstViewOnly: true,
   location: "Dulles:Chrome",
-  runs: 2,
+  runs: 1,
   pollResults: 5,
   timeout: 240,
   emulateMobile: true,
-  lighthouse: true,
 };
 
 wpt.runTest(testUrl, options, (err, result) => {
