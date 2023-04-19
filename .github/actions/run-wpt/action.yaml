@@ -102,7 +102,7 @@ runs:
                   },
                   {
                     "type": "plain_text",
-                    "text": "${{ steps.run-wpt.outputs.wpt-values).FCP}}\nLCP\nTTI\nFID\nCLS\nTTFB\nTBT\nSI"
+                    "text": "${{ steps.run-wpt.outputs.wpt-values.FCP}}\nLCP\nTTI\nFID\nCLS\nTTFB\nTBT\nSI"
                   }
                 ]
               }
