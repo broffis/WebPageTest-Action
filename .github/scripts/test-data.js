@@ -1,8 +1,8 @@
 const data = {
   average: {
     firstView: {
-      "chromeUserTiming.firstContentfulPaint": 5,
-      "chromeUserTiming.LargestContentfulPaint": 3,
+      "chromeUserTiming.firstContentfulPaint": 500,
+      "chromeUserTiming.LargestContentfulPaint": 300,
       maxFID: 200,
       "chromeUserTiming.CumulativeLayoutShift": 0.15,
       TTFB: 1.2,
