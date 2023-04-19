@@ -81,5 +81,26 @@ runs:
                   },
                 ]
               },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "Page Results"
+                }
+                "fields" [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Metric*"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Score*"
+                  },
+                  {
+                    "type": "plain_text",
+                    "text": "FCP\nLCP\nTTI\nFID\nCLS\nTTFB\nTBT\nSI"
+                  }
+                ]
+              }
             ]
           }
