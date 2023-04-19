@@ -97,6 +97,10 @@ runs:
                     "text": "*Score*"
                   },
                   {
+                    "type": "mrkdwn",
+                    "text": "*Risk*"
+                  },
+                  {
                     "type": "plain_text",
                     "text": "FCP\nLCP\nTTI\nFID\nCLS\nTTFB\nTBT\nSI"
                   },
