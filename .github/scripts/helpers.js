@@ -20,7 +20,6 @@ const generateSlackValues = (metricValue, label) => {
 };
 
 const pickSlackEmoji = (value, min, max) => {
-  console.log({ value, min, max });
   if (value < min) {
     return slackEmojis.GREEN_CIRCLE;
   } else if (value < max && value >= min) {
