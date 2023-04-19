@@ -99,6 +99,10 @@ runs:
                   {
                     "type": "plain_text",
                     "text": "FCP\nLCP\nTTI\nFID\nCLS\nTTFB\nTBT\nSI"
+                  },
+                  {
+                    "type": "plain_text",
+                    "text": "${{ steps.run-wpt.outputs.wpt-values).FCP}}\nLCP\nTTI\nFID\nCLS\nTTFB\nTBT\nSI"
                   }
                 ]
               }
