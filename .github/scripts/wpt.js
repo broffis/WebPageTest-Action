@@ -26,10 +26,10 @@ module.exports = ({ core }, { options, slug }) => {
 
   const { average, median } = data;
 
-  const data = extractChromeUserData(average.firstView);
+  const cruxData = extractChromeUserData(average.firstView);
   const img = extractWaterfallImg(median.firstView);
 
-  console.log({ data, img });
+  console.log({ cruxData, img });
 
   // wpt.runTest(testUrl, options, (err, result) => {
   //   if (result) {
