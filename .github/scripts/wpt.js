@@ -55,5 +55,5 @@ module.exports = ({ core }, { device, slug }) => {
   //   }
   // });
 
-  core.setOutput("wpt-values", { FCP, LCP, TTI, FID, CLS, TFB, TBT, SI });
+  core.setOutput("wpt-values", { FCP, LCP, TTI, FID, CLS, TFB, TBT, SI, img });
 };
