@@ -5,6 +5,8 @@ import {
   extractWaterfallImg,
 } from "./helpers/extract.helpers";
 
+import { generateSlackValues } from "./helpers/slack.helpers";
+
 config();
 
 const api_key = process.env.WEBPAGETEST_API_KEY;
@@ -23,12 +25,34 @@ let options = {
 
 wpt.runTest(testUrl, options, (err, result) => {
   if (result) {
-    const { average, median } = result.data;
+    const { average, median, summary } = result.data;
 
-    const data = extractChromeUserData(average.firstView);
+    const cruxData = extractChromeUserData(average.firstView);
     const img = extractWaterfallImg(median.firstView);
 
-    console.log({ data, img });
+    console.log({ cruxData, img });
+
+    const FCP = generateSlackValues(cruxData.firstContentfulPaint, "FCP");
+    const LCP = generateSlackValues(cruxData.largestContentfulPaint, "LCP");
+    const TTI = generateSlackValues(cruxData.timeToInteractive, "TTI");
+    const FID = generateSlackValues(cruxData.firstInputDelay, "FID");
+    const CLS = generateSlackValues(cruxData.cumulativeLayoutShift, "CLS");
+    const TFB = generateSlackValues(cruxData.timeToFirstByte, "TFB");
+    const TBT = generateSlackValues(cruxData.totalBlockingTime, "TBT");
+    const SI = generateSlackValues(cruxData.speedIndex, "SI");
+
+    console.log("slack outputs", {
+      FCP,
+      LCP,
+      TTI,
+      FID,
+      CLS,
+      TFB,
+      TBT,
+      SI,
+      img,
+      summary,
+    });
   } else {
     console.log(err);
   }

@@ -10,6 +10,7 @@ export const generateSlackValues = (
   label: LHMetricLabel
 ): SlackMessageValues => {
   const { displayValue, max, min } = lhMetricValues[label.toLowerCase()];
+  console.log({ metricValue, label, displayValue, max, min });
   let calculatedValue = 0;
 
   if (displayValue === "s") {
