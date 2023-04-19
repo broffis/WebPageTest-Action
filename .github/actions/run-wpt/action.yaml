@@ -63,8 +63,8 @@ runs:
               {
                 "type": "header",
                 "text": {
-                  "type": "mrkdwn",
-                  "text": "<https://www.build.com/${{ inputs.page-slug }}|${{ inputs.page-name}}>",
+                  "type": "plain_text",
+                  "text": "${{ inputs.page-name}}",
                 }
               },
               {
