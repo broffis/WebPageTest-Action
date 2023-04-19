@@ -105,7 +105,7 @@ runs:
                     "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).FCP.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).LCP.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).TTI.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).FID.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).CLS.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).TFB.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).TBT.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).SI.emoji}}\n"
                   },
                   {
-                    "text": "<${{ fromJSON(steps.run-wpt.outputs).img }}|Waterfall>",
+                    "text": "<${{ fromJSON(steps.run-wpt.outputs.wpt-values).img }}|Waterfall>",
                     "type": "mrkdwn"
                   }
                 ]

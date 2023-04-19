@@ -40,7 +40,7 @@ module.exports = ({ core }, { device, slug }) => {
   const TBT = generateSlackValues(cruxData.totalBlockingTime, "TBT");
   const SI = generateSlackValues(cruxData.speedIndex, "SI");
 
-  console.log("slack outputs", { FCP, LCP, TTI, FID, CLS, TFB, TBT, SI });
+  console.log("slack outputs", { FCP, LCP, TTI, FID, CLS, TFB, TBT, SI, img });
 
   // wpt.runTest(testUrl, options, (err, result) => {
   //   if (result) {
