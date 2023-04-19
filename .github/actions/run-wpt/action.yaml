@@ -64,8 +64,8 @@ runs:
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "${{ inputs.page-name}}",
-                  "emoji": "true"
+                  "text": "${{ inputs.page-name }}",
+                  "emoji": true
                 }
               },
               {
