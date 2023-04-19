@@ -63,9 +63,8 @@ runs:
               {
                 "type": "header",
                 "text": {
-                  "type": "plain_text",
+                  "type": "mrkdwn",
                   "text": "<https://www.build.com/${{ inputs.page-slug }}|${{ inputs.page-name}}>",
-                  "emoji": true
                 }
               },
               {
