@@ -90,7 +90,7 @@ runs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Metric*"
+                    "text": "*Metric*\t"
                   },
                   {
                     "type": "mrkdwn",
@@ -102,16 +102,16 @@ runs:
                   },
                   {
                     "type": "plain_text",
+                    "text": "FCP"
+                  }
+                  {
+                    "type": "plain_text",
                     "text": "FCP\nLCP\nTTI\nFID\nCLS\nTTFB\nTBT\nSI"
                   },
                   {
                     "type": "plain_text",
-                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.value}}"
+                    "text": "${{ fromJSON(steps.run-wpt-outputs.wpt-values).FCP.value }}\t${{ fromJSON(steps.run-wpt-outputs.wpt-values).FCP.emoji }}\n${{ fromJSON(steps.run-wpt-outputs.wpt-values).LCP.value }}\t${{ fromJSON(steps.run-wpt-outputs.wpt-values).LCP.emoji }}\n${{ fromJSON(steps.run-wpt-outputs.wpt-values).TTI.value }}\t${{ fromJSON(steps.run-wpt-outputs.wpt-values).TTI.emoji }}\n${{ fromJSON(steps.run-wpt-outputs.wpt-values).FID.value }}\t${{ fromJSON(steps.run-wpt-outputs.wpt-values).FID.emoji }}\n${{ fromJSON(steps.run-wpt-outputs.wpt-values).CLS.value }}\t${{ fromJSON(steps.run-wpt-outputs.wpt-values).CLS.emoji }}\n${{ fromJSON(steps.run-wpt-outputs.wpt-values).TFB.value }}\t${{ fromJSON(steps.run-wpt-outputs.wpt-values).TFB.emoji }}\n${{ fromJSON(steps.run-wpt-outputs.wpt-values).TBT.value }}\t${{ fromJSON(steps.run-wpt-outputs.wpt-values).TBT.emoji }}\n${{ fromJSON(steps.run-wpt-outputs.wpt-values).SI.value }}\t${{ fromJSON(steps.run-wpt-outputs.wpt-values).SI.emoji }}\n"
                   },
-                  {
-                    "type": "plain_text",
-                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.emoji}}"
-                  }
                 ]
               }
             ]
