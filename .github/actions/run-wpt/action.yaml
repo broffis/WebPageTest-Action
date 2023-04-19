@@ -84,10 +84,10 @@ runs:
               {
                 "type": "section",
                 "text": {
-                  "type": "mrkdwn",
-                  "text": "Page Results"
-                }
-                "fields" [
+                  "text": "Page Results",
+                  "type": "mrkdwn"
+                },
+                "fields": [
                   {
                     "type": "mrkdwn",
                     "text": "*Metric*"
