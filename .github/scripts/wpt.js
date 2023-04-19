@@ -19,7 +19,7 @@ let options = {
   timeout: 240,
 };
 
-module.exports = ({ core }, { options, slug }) => {
+module.exports = ({ core }, { device, slug }) => {
   // const testUrl = slug
   //   ? `https://www.build.com/${slug}`
   //   : `https://www.build.com/${defaultSlug}`;
@@ -54,4 +54,6 @@ module.exports = ({ core }, { options, slug }) => {
   //     console.log(err);
   //   }
   // });
+
+  core.setOutput("wpt-values", { FCP, LCP, TTI, FID, CLS, TFB, TBT, SI });
 };

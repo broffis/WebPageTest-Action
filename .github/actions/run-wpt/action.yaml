@@ -50,3 +50,36 @@ runs:
         script: |
           const run = require('.github/scripts/wpt.js');
           await run({ github, context, core }, { device: "${{ inputs.device }}", slug: "${{ inputs.page-slug}}" });
+    - name: Notify Slack
+      id: notify
+      uses: 8398a7/action-slack@v3
+      env:
+        SLACK_WEBHOOK_URL: ${{ inputs.slack-webhook }}
+      with:
+        status: custom
+        custom_payload: |
+          {
+            block: [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "<https://www.build.com/${{ inputs.page-slug }}|${{ inputs.page-name}}>",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*URL:* <https://www.build.com/${{ inputs.page-slug }}|${{ inputs.page-name}}> "
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Device*: ${{ inputs.device}}"
+                  },
+                ]
+              },
+            ]
+          }
