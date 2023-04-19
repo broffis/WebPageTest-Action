@@ -65,6 +65,7 @@ runs:
                 "text": {
                   "type": "plain_text",
                   "text": "${{ inputs.page-name}}",
+                  "emoji": "true"
                 }
               },
               {
