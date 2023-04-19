@@ -15,7 +15,7 @@ inputs:
     description: MOBILE or DESKTOP
     required: true
   page-slug:
-    description: slug for page to be tested. e.g. /showroom
+    description: slug for page to be tested. e.g. showroom
     required: true
   page-name:
     description: What you want to call this page
@@ -103,6 +103,35 @@ runs:
                   {
                     "type": "plain_text",
                     "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).FCP.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).LCP.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).TTI.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).FID.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).CLS.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).TFB.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).TBT.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.value }}\t\t${{fromJSON(steps.run-wpt.outputs.wpt-values).SI.emoji}}\n"
+                  },
+                  {
+                    "text": "<${{ fromJSON(steps.run-wpt.outputs.wpt-values).img }}|Waterfall>",
+                    "type": "mrkdwn"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "text": {
+                  "text": "Page Results v2",
+                  "type": "mrkdwn"
+                },
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Metric*\t"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Score*"
+                  },
+                  {
+                    "type": "plain_text",
+                    "text": "${{fromJSON(steps.run-wpt.outputs.wpt-values).FCP.emoji}}\t\tFCP\n${{fromJSON(steps.run-wpt.outputs.wpt-values).LCP.emoji}}\t\tLCP\n${{fromJSON(steps.run-wpt.outputs.wpt-values).TTI.emoji}}\t\tTTI\n${{fromJSON(steps.run-wpt.outputs.wpt-values).FID.emoji}}\t\tFID\n${{fromJSON(steps.run-wpt.outputs.wpt-values).CLS.emoji}}\t\tCLS\n${{fromJSON(steps.run-wpt.outputs.wpt-values).TFB.emoji}}\t\tTTFB\n${{fromJSON(steps.run-wpt.outputs.wpt-values).TBT.emoji}}\t\tTBT\n${{fromJSON(steps.run-wpt.outputs.wpt-values).SI.emoji}}\t\tSI"
+                  },
+                  {
+                    "type": "plain_text",
+                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.value }}"
                   },
                   {
                     "text": "<${{ fromJSON(steps.run-wpt.outputs.wpt-values).img }}|Waterfall>",
