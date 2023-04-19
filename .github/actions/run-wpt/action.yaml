@@ -103,6 +103,10 @@ runs:
                   {
                     "type": "plain_text",
                     "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.value}}"
+                  },
+                  {
+                    "type": "plain_text",
+                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.emoji}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.emoji}}"
                   }
                 ]
               }
