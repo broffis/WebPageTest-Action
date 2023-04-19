@@ -4,7 +4,6 @@ const {
   extractWaterfallImg,
   generateSlackValues,
 } = require("./helpers");
-const { data } = require("./test-data");
 
 const api_key = process.env.WEBPAGETEST_API_KEY;
 

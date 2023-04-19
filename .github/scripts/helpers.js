@@ -69,4 +69,5 @@ module.exports = {
   generateSlackValues,
   extractChromeUserData,
   extractWaterfallImg,
+  pickSlackEmoji,
 };

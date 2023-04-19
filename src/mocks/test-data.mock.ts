@@ -1,13 +1,13 @@
 export const data = {
   average: {
     firstView: {
-      "chromeUserTiming.firstContentfulPaint": 500,
-      "chromeUserTiming.LargestContentfulPaint": 300,
-      maxFID: 200,
-      "chromeUserTiming.CumulativeLayoutShift": 0.15,
-      TTFB: 1.2,
-      TotalBlockingTime: 400,
-      SpeedIndex: 4.4,
+      "chromeUserTiming.firstContentfulPaint": 971,
+      "chromeUserTiming.LargestContentfulPaint": 11769,
+      maxFID: 1315,
+      "chromeUserTiming.CumulativeLayoutShift": 0.1019,
+      TTFB: 505,
+      TotalBlockingTime: 7832,
+      SpeedIndex: 4771,
     },
   },
   median: {
