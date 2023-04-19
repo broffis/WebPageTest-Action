@@ -106,7 +106,7 @@ runs:
                   },
                   {
                     "text": "<${{ fromJSON(steps.run-wpt.outputs).img }}|Waterfall>",
-                    "type": "plain_text"
+                    "type": "mrkdwn"
                   }
                 ]
               },
