@@ -27,12 +27,12 @@ module.exports = ({ core }, { device, slug }) => {
 
   wpt.runTest(testUrl, options, (err, result) => {
     if (result) {
-      const { average, median } = result.data;
+      const { average, median, summary } = result.data;
 
       const cruxData = extractChromeUserData(average.firstView);
       const img = extractWaterfallImg(median.firstView);
 
-      console.log({ cruxData, img });
+      console.log({ cruxData, img, summary });
 
       const FCP = generateSlackValues(cruxData.firstContentfulPaint, "FCP");
       const LCP = generateSlackValues(cruxData.largestContentfulPaint, "LCP");
@@ -42,8 +42,6 @@ module.exports = ({ core }, { device, slug }) => {
       const TFB = generateSlackValues(cruxData.timeToFirstByte, "TFB");
       const TBT = generateSlackValues(cruxData.totalBlockingTime, "TBT");
       const SI = generateSlackValues(cruxData.speedIndex, "SI");
-
-      console.log({ data, img });
 
       core.setOutput("wpt-values", {
         FCP,
@@ -55,6 +53,7 @@ module.exports = ({ core }, { device, slug }) => {
         TBT,
         SI,
         img,
+        summary,
       });
     } else {
       console.log(err);

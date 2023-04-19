@@ -25,7 +25,7 @@ let options = {
 
 wpt.runTest(testUrl, options, (err, result) => {
   if (result) {
-    const { average, median } = result.data;
+    const { average, median, summary } = result.data;
 
     const cruxData = extractChromeUserData(average.firstView);
     const img = extractWaterfallImg(median.firstView);
@@ -41,7 +41,18 @@ wpt.runTest(testUrl, options, (err, result) => {
     const TBT = generateSlackValues(cruxData.totalBlockingTime, "TBT");
     const SI = generateSlackValues(cruxData.speedIndex, "SI");
 
-    console.log("slack outputs", { FCP, LCP, TTI, FID, CLS, TFB, TBT, SI });
+    console.log("slack outputs", {
+      FCP,
+      LCP,
+      TTI,
+      FID,
+      CLS,
+      TFB,
+      TBT,
+      SI,
+      img,
+      summary,
+    });
   } else {
     console.log(err);
   }
