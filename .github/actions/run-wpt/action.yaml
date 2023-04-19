@@ -102,7 +102,7 @@ runs:
                   },
                   {
                     "type": "plain_text",
-                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value }}\t${{fromJSON(steps.run-wpt-outputs.wpt-values).FCP.emoji}}\n"
+                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value }}\t${{fromJSON(steps.run-wpt.outputs.wpt-values).FCP.emoji}}\n"
                   }
                 ]
               }
