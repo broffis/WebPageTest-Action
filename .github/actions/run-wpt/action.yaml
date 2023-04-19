@@ -59,7 +59,7 @@ runs:
         status: custom
         custom_payload: |
           {
-            block: [
+            blocks: [
               {
                 "type": "header",
                 "text": {
