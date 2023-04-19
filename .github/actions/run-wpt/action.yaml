@@ -102,7 +102,7 @@ runs:
                   },
                   {
                     "type": "plain_text",
-                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP}}\nLCP\nTTI\nFID\nCLS\nTTFB\nTBT\nSI"
+                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.value}}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.value}}"
                   }
                 ]
               }
