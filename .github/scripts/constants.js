@@ -1,4 +1,4 @@
-export const lhMetricValues = {
+const lhMetricValues = {
   fcp: {
     name: "firstContentfulPaint",
     reportValue: "chromeUserTiming.firstContentfulPaint",
