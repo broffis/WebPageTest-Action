@@ -31,6 +31,17 @@ module.exports = ({ core }, { options, slug }) => {
 
   console.log({ cruxData, img });
 
+  const FCP = generateSlackValues(cruxData.firstContentfulPaint, "FCP");
+  const LCP = generateSlackValues(cruxData.firstContentfulPaint, "LCP");
+  const TTI = generateSlackValues(cruxData.firstContentfulPaint, "TTI");
+  const FID = generateSlackValues(cruxData.firstContentfulPaint, "FID");
+  const CLS = generateSlackValues(cruxData.firstContentfulPaint, "CLS");
+  const TFB = generateSlackValues(cruxData.firstContentfulPaint, "TFB");
+  const TBT = generateSlackValues(cruxData.firstContentfulPaint, "TBT");
+  const SI = generateSlackValues(cruxData.firstContentfulPaint, "SI");
+
+  console.log("slack outputs", { FCP, LCP, TTI, FID, CLS, TFB, TBT, SI });
+
   // wpt.runTest(testUrl, options, (err, result) => {
   //   if (result) {
   //     const { average, median } = result.data;
