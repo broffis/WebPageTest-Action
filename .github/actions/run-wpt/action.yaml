@@ -1,5 +1,5 @@
 name: "WPT Runner"
-description: WebPageTest Runner
+description: Full WebPageTest Runner
 
 inputs:
   packages-access-token:
@@ -11,104 +11,17 @@ inputs:
   slack-webhook:
     description: slack webhook url
     required: true
-  device:
-    description: MOBILE or DESKTOP
-    required: true
-  page-slug:
-    description: slug for page to be tested. e.g. showroom
-    required: true
-  page-name:
-    description: What you want to call this page
-    required: true
-
-outputs:
-  wpt:
-    description: WPT outputs based on slug and device
-    value: ${{ steps.run-wpt.outputs.wpt-values }}
 
 runs:
-  using: composite
+  using: composite:
   steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Setup Node
-      uses: actions/setup-node@v3
+    - name: Single WPT Run
+      uses: ./.github/actions/run-wpt/single-runner
+      id: single-wpt-runner
       with:
-        node-version: 16
-    - name: Install
-      run: |
-        rm package*
-        cd  .github/scripts
-        npm i webpagetest
-      shell: bash
-    - name: Run WebPageTest
-      id: run-wpt
-      uses: actions/github-script@v6
-      env:
-        WEBPAGETEST_API_KEY: ${{ inputs.wpt-token }}
-      with:
-        script: |
-          const run = require('.github/scripts/wpt.js');
-          await run({ github, context, core }, { device: "${{ inputs.device }}", slug: "${{ inputs.page-slug}}" });
-    - name: Notify Slack
-      id: notify
-      uses: 8398a7/action-slack@v3
-      env:
-        SLACK_WEBHOOK_URL: ${{ inputs.slack-webhook }}
-      with:
-        status: custom
-        custom_payload: |
-          {
-            blocks: [
-              {
-                "type": "header",
-                "text": {
-                  "type": "plain_text",
-                  "text": "${{ inputs.page-name }}",
-                  "emoji": true
-                }
-              },
-              {
-                "type": "context",
-                "elements": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*URL:* <https://www.build.com/${{ inputs.page-slug }}|${{ inputs.page-name}}> "
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Device*: ${{ inputs.device}}"
-                  },
-                ]
-              },
-              {
-                "type": "section",
-                "text": {
-                  "text": "<${{ fromJSON(steps.run-wpt.outputs.wpt-values).summary}}|Test Results>",
-                  "type": "mrkdwn"
-                },
-                "fields": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Metric*\t"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Score*"
-                  },
-                  {
-                    "type": "plain_text",
-                    "text": "${{fromJSON(steps.run-wpt.outputs.wpt-values).FCP.emoji}}\t\tFCP\n${{fromJSON(steps.run-wpt.outputs.wpt-values).LCP.emoji}}\t\tLCP\n${{fromJSON(steps.run-wpt.outputs.wpt-values).TTI.emoji}}\t\tTTI\n${{fromJSON(steps.run-wpt.outputs.wpt-values).FID.emoji}}\t\tFID\n${{fromJSON(steps.run-wpt.outputs.wpt-values).CLS.emoji}}\t\tCLS\n${{fromJSON(steps.run-wpt.outputs.wpt-values).TFB.emoji}}\t\tTTFB\n${{fromJSON(steps.run-wpt.outputs.wpt-values).TBT.emoji}}\t\tTBT\n${{fromJSON(steps.run-wpt.outputs.wpt-values).SI.emoji}}\t\tSI"
-                  },
-                  {
-                    "type": "plain_text",
-                    "text": "${{ fromJSON(steps.run-wpt.outputs.wpt-values).FCP.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).LCP.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TTI.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).FID.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).CLS.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TFB.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).TBT.value }}\n${{ fromJSON(steps.run-wpt.outputs.wpt-values).SI.value }}"
-                  },
-                  {
-                    "text": "<${{ fromJSON(steps.run-wpt.outputs.wpt-values).img }}|Waterfall>",
-                    "type": "mrkdwn"
-                  }
-                ]
-              },
-            ]
-          }
+        packages-access-token: ${{ inputs.packages-access-token }}
+        wpt-token: ${{ inputs.wpt-token }}
+        slack-webhook: ${{ inputs.slack-webhook }}
+        device: MOBILE
+        page-slug: product/summary/433454
+        page-name: Categories Page

@@ -10,6 +10,18 @@ jobs:
     outputs:
       wpt: ${{ steps.wpt-runner.outputs.wpt }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install
+        run: |
+          rm package*
+          cd  .github/scripts
+          npm i webpagetest
+        shell: bash
       - uses: actions/checkout@v3
       - uses: ./.github/actions/run-wpt
         id: wpt-runner
@@ -17,6 +29,3 @@ jobs:
           packages-access-token: ${{ secrets.GITHUB_TOKEN }}
           wpt-token: ${{ secrets.WEBPAGETEST_API_KEY }}
           slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
-          device: MOBILE
-          page-slug: product/summary/433454
-          page-name: Categories Page
