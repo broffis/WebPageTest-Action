@@ -13,7 +13,7 @@ inputs:
     required: true
 
 runs:
-  using: composite:
+  using: composite
   steps:
     - name: Single WPT Run
       uses: ./.github/actions/run-wpt/single-runner
