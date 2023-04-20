@@ -29,18 +29,6 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    - name: Install
-      run: |
-        rm package*
-        cd  .github/scripts
-        npm i webpagetest
-      shell: bash
     - name: Run WebPageTest
       id: run-wpt
       uses: actions/github-script@v6
