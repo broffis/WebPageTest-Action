@@ -15,6 +15,16 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install
+        run: |
+          rm package*
+          cd  .github/scripts
+          npm i webpagetest
+        shell: bash
     - name: Single WPT Run
       uses: ./.github/actions/run-wpt/single-runner
       id: single-wpt-runner
