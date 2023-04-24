@@ -18,7 +18,7 @@ module.exports = ({ core }, { device, slug }) => {
   const options = {
     firstViewOnly: true,
     location: "Dulles:Chrome",
-    runs: 9,
+    runs: 1,
     pollResults: 5,
     timeout: 240,
     emulateMobile: device === "MOBILE",
