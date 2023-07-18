@@ -1,10 +1,13 @@
 const fetch = require("node-fetch");
 
 module.exports = ({ core }) => {
-  fetch("https://www.build.com").then((res) => {
-    const { headers } = res;
-    const siteVersion = headers.get("X-Fergy-App-Version");
-    console.log({ headers, siteVersion });
-    core.setOutput("site-version", siteVersion);
-  });
+  fetch("https://www.build.com")
+    .then((res) => {
+      console.log(res.headers);
+      const siteVersion = res.headers.get("x-site-version");
+      core.setOutput("site-version", siteVersion);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
