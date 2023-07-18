@@ -35,8 +35,10 @@ runs:
         script: |
           const site = "${{ inputs.site }}";
           fetch(site).then((res) => {
-            const siteVersion = res.headers.get("X-Fergy-App-Version");
+            const { headers } = res;
+            const siteVersion = headers.("X-Fergy-App-Version");
             console.log({ headers: res.headers, siteVersion })
+            console.log(headers.raw())
             core.setOutput("site-version", siteVersion);
           }).catch((err) => {
             console.log(err);
