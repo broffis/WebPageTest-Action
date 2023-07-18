@@ -21,12 +21,10 @@ runs:
       with:
         script: |
           const site = "${{ inputs.site }}";
-          const response = await fetch(site);
-          const headers = response.headers;
-          const version = headers.get('x-fergy-app-version');
-          console.log({
-            site,
-            headers,
-            version
-          })
-          core.setOutput('site-version', version);
+          fetch(site).then((res) => {
+            console.log(res.headers);
+            const siteVersion = res.headers.get("x-site-version");
+            core.setOutput("site-version", siteVersion);
+          }).catch((err) => {
+            console.log(err);
+          });
