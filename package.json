@@ -5,6 +5,7 @@
   "main": "src/wpt.ts",
   "scripts": {
     "run": "tsc && node dist/wpt.js",
+    "fetch": "tsc && node dist/fetch.js",
     "test": "jest"
   },
   "dependencies": {
@@ -16,5 +17,6 @@
     "@types/node": "^18.15.11",
     "jest": "^29.5.0",
     "typescript": "^5.0.4"
-  }
+  },
+  "type": "module"
 }

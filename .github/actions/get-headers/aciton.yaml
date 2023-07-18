@@ -1,0 +1,28 @@
+name: "Fetch Site Headers"
+description: "Fetches the headers for a given site"
+
+inputs:
+  site:
+    description: "The site to fetch headers for"
+    required: true
+    default: "https://www.build.com/"
+
+outputs:
+  site-version:
+    description: "The version of the site"
+    value: ${{ steps.get-headers.outputs.site-version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Fetch Headers
+      id: get-headers
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fetch = require('node-fetch');
+          const site = "${{ inputs.site }}";
+          const response = await fetch(site);
+          const headers = response.headers;
+          const version = headers.get('x-fergy-app-version');
+          core.setOutput('site-version', version);
