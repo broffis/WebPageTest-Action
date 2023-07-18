@@ -20,9 +20,8 @@ runs:
       uses: actions/github-script@v6
       with:
         script: |
-          const nodeFetch = require('node-fetch');
           const site = "${{ inputs.site }}";
-          const response = await nodeFetch(site);
+          const response = await fetch(site);
           const headers = response.headers;
           const version = headers.get('x-fergy-app-version');
           core.setOutput('site-version', version);
