@@ -15,29 +15,29 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    - name: Install
-      run: |
-        rm package*
-        cd  .github/scripts
-        npm i node-fetch
-      shell: bash
+    # - name: Setup Node
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: 16
+    # - name: Install
+    #   run: |
+    #     rm package*
+    #     cd  .github/scripts
+    #     npm i node-fetch
+    #   shell: bash
     - name: Fetch Headers
       id: get-headers
       uses: actions/github-script@v6
       with:
-        script: |
-          const run = require('.github/scripts/get-headers.js');
-          await run({ core })
         # script: |
-        #   const site = "${{ inputs.site }}";
-        #   fetch(site).then((res) => {
-        #     const siteVersion = res.headers.get("X-Fergy-App-Version");
-        #     console.log({ headers: res.headers, siteVersion })
-        #     core.setOutput("site-version", siteVersion);
-        #   }).catch((err) => {
-        #     console.log(err);
-        #   });
+        #   const run = require('.github/scripts/get-headers.js');
+        #   await run({ core })
+        script: |
+          const site = "${{ inputs.site }}";
+          fetch(site).then((res) => {
+            const siteVersion = res.headers.get("X-Fergy-App-Version");
+            console.log({ headers: res.headers, siteVersion })
+            core.setOutput("site-version", siteVersion);
+          }).catch((err) => {
+            console.log(err);
+          });
