@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
 module.exports = ({ core }) => {
   fetch("https://www.build.com").then((res) => {
