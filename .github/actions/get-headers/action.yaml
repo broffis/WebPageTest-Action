@@ -15,6 +15,16 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install
+      run: |
+        rm package*
+        cd  .github/scripts
+        npm i node-fetch
+      shell: bash
     - name: Fetch Headers
       id: get-headers
       uses: actions/github-script@v6
