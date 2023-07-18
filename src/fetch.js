@@ -4,7 +4,7 @@ const fetchData = () => {
   fetch("https://www.build.com")
     .then((res) => {
       console.log(res.headers);
-      const siteVersion = res.headers.get("x-site-version");
+      const siteVersion = res.headers.get("x-fergy-app-version");
       core.setOutput("site-version", siteVersion);
     })
     .catch((err) => {
