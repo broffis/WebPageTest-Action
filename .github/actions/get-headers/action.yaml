@@ -24,5 +24,9 @@ runs:
           const response = await fetch(site);
           const headers = response.headers;
           const version = headers.get('x-fergy-app-version');
-          console.log(version)
+          console.log({
+            site,
+            headers,
+            version
+          })
           core.setOutput('site-version', version);
