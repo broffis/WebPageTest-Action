@@ -3,8 +3,8 @@ import fetch from "node-fetch";
 const fetchData = () => {
   fetch("https://www.build.com")
     .then((res) => {
-      console.log(res.headers);
-      const siteVersion = res.headers.get("x-fergy-app-version");
+      const { headers } = res;
+      const siteVersion = headers.get("x-fergy-app-version");
       core.setOutput("site-version", siteVersion);
     })
     .catch((err) => {
