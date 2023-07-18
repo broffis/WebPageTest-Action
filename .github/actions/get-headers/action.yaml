@@ -25,20 +25,23 @@ runs:
     #     cd  .github/scripts
     #     npm i node-fetch
     #   shell: bash
+    # - name: Fetch Headers
+    #   id: get-headers
+    #   uses: actions/github-script@v6
+    #   with:
+    #     script: |
+    #           const run = require('.github/scripts/get-headers.js');
+    #           await run({ core })
     - name: Fetch Headers
       id: get-headers
       uses: actions/github-script@v6
       with:
-        # script: |
-        #   const run = require('.github/scripts/get-headers.js');
-        #   await run({ core })
         script: |
           const site = "${{ inputs.site }}";
           fetch(site).then((res) => {
             const { headers } = res;
             const siteVersion = headers.("X-Fergy-App-Version");
             console.log({ headers: res.headers, siteVersion });
-            console.log(headers.raw());
             core.setOutput("site-version", siteVersion);
           }).catch((err) => {
             console.log(err);
