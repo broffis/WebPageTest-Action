@@ -12,7 +12,8 @@ const fetchData = () => {
     .then((res) => {
       const { headers, status } = res;
       const siteVersion = headers.get("x-fergy-app-version");
-      console.log({ siteVersion, status });
+      const siteLength = headers.get("content-length");
+      console.log({ siteVersion, status, siteLength });
     })
     .catch((err) => {
       console.log(err);

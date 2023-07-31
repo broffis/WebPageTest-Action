@@ -12,7 +12,8 @@ module.exports = ({ core }) => {
     .then((res) => {
       const { headers, status } = res;
       const siteVersion = headers.get("x-site-version");
-      console.log({ status, siteVersion });
+      const siteLength = headers.get("content-length");
+      console.log({ siteVersion, status, siteLength });
       core.setOutput("site-version", siteVersion);
     })
     .catch((err) => {
