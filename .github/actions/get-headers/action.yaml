@@ -42,8 +42,11 @@ runs:
         script: |
           const site = "${{ inputs.site }}";
           fetch(site, {
-            "x-px-captcha-testing": ${{ inputs.px-token }},
-            "User-Agent": "Headless-Chrome"
+            method: "GET",
+            headers: {
+              "x-px-captcha-testing": ${{ inputs.px-token }},
+              "User-Agent": "Headless-Chrome"
+            }
           }).then((res) => {
             const { headers, status } = res;
             const siteVersion = headers.get("x-fergy-app-version");
