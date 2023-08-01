@@ -7,6 +7,7 @@ module.exports = ({ core }) => {
     method: "GET",
     headers: {
       "x-px-captcha-testing": PX_TOKEN,
+      "User-Agent": "Headless-Chrome",
     },
   })
     .then((res) => {
