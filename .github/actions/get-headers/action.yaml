@@ -1,0 +1,58 @@
+name: "Fetch Site Headers"
+description: "Fetches the headers for a given site"
+
+inputs:
+  site:
+    description: "The site to fetch headers for"
+    required: true
+    default: "https://www.build.com/"
+  px-token:
+    description: PerimeterX token
+    required: true
+
+outputs:
+  site-version:
+    description: "The version of the site"
+    value: ${{ steps.get-headers.outputs.site-version }}
+
+runs:
+  using: composite
+  steps:
+    # - name: Setup Node
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: 16
+    # - name: Install
+    #   run: |
+    #     rm package*
+    #     cd  .github/scripts
+    #     npm i node-fetch
+    #   shell: bash
+    # - name: Fetch Headers
+    #   id: get-headers
+    #   uses: actions/github-script@v6
+    #   with:
+    #     script: |
+    #           const run = require('.github/scripts/get-headers.js');
+    #           await run({ core })
+    - name: Fetch Headers
+      id: get-headers
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const site = "${{ inputs.site }}";
+          fetch(site, {
+            method: "GET",
+            headers: {
+              "x-px-captcha-testing": "${{ inputs.px-token }}",
+              "User-Agent": "Headless-Chrome"
+            }
+          }).then((res) => {
+            const { headers, status } = res;
+            const siteVersion = headers.get("x-fergy-app-version");
+            const siteLength = headers.get("content-length");
+            console.log({ siteVersion, status, siteLength });
+            core.setOutput("site-version", siteVersion);
+          }).catch((err) => {
+            console.log(err);
+          });
