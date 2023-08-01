@@ -47,8 +47,8 @@ runs:
           }).then((res) => {
             const { headers, status } = res;
             const siteVersion = headers.get("x-fergy-app-version");
-            console.log({ headers, siteVersion, status });
-            console.log(headers.raw());
+            const siteLength = headers.get("content-length");
+            console.log({ siteVersion, status, siteLength });
             core.setOutput("site-version", siteVersion);
           }).catch((err) => {
             console.log(err);
