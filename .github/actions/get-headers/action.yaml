@@ -6,6 +6,9 @@ inputs:
     description: "The site to fetch headers for"
     required: true
     default: "https://www.build.com/"
+  px-token:
+    description: PerimeterX token
+    required: true
 
 outputs:
   site-version:
@@ -38,7 +41,10 @@ runs:
       with:
         script: |
           const site = "${{ inputs.site }}";
-          fetch(site).then((res) => {
+          fetch(site, {
+            "x-px-captcha-testing": ${{ inputs.px-token }},
+            "User-Agent": "Headless-Chrome"
+          }).then((res) => {
             const { headers, status } = res;
             const siteVersion = headers.get("x-fergy-app-version");
             console.log({ headers, siteVersion, status });

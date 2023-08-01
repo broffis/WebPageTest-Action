@@ -15,6 +15,7 @@ jobs:
       - uses: ./.github/actions/get-headers
         with:
           site: "https://www.build.com"
+          px-token: ${{ secrets.PX_TOKEN }}
       # - uses: ./.github/actions/run-wpt
       #   id: wpt-runner
       #   with:
